@@ -78,13 +78,10 @@ def Suma_De_Filas(m, f1, f2):
 
 #Creacion de matriz aleatoria
 
-def crear_Matriz():
+def crear_Matriz(n, m):
   rng = np.random.default_rng(seed=42)
-  matriz_Aleatoria = rng.integers(low=0, high=10, size=(6,6))
+  matriz_Aleatoria = rng.integers(low=0, high=10, size=(n,m))
   return matriz_Aleatoria
-
-matriz_Nueva = crear_Matriz()
-print(matriz_Nueva)
 
 #Definir Dimensiones de la matriz
 
@@ -92,9 +89,29 @@ def definir_Dimension():
   while True:
     try:
       filas = int(input("Ingresa el numero de Filas: "))
-      columnas = int(input("Ingresa el numero de Columnas"))
+      columnas = int(input("Ingresa el numero de Columnas: "))
       return filas, columnas
     except ValueError:
       print("Error: Ingresa numeros validos")
 
+#Empezamos con el codigo
+filas, columnas = definir_Dimension()
 
+matriz_Nueva = crear_Matriz(filas, columnas)
+print(matriz_Nueva)
+
+# while True:
+#   menu()
+#   option = input("Elige una opcion del 1-5: ")
+  
+#   if option == "5":
+#     print("Gracias por usar mi codigo")
+#     break
+  
+#   elif option == "4":
+#     if matriz_Resultante:
+#       print("Matriz resultante")
+#       print("operacion.pop")
+#     else:
+#       print("No hay operaciones en el historial")
+  
