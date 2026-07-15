@@ -41,9 +41,14 @@ def formatear_matriz_fracciones(matriz):
     def fmt(x):
         if isinstance(x, Fraction):
             # Si denominador es 1, solo muestra el numerador
-            # if x.denominator == 1:
-            #     return str(x.numerator)
+            if x.denominator == 1:
+                return str(x.numerator)
             return f"{x.numerator}/{x.denominator}"
         return str(x)
     
     return np.array2string(matriz, formatter={'object': fmt})
+
+def resultado(matriz):
+    matriz_String = formatear_matriz_fracciones(matriz)
+    print("Matriz:")
+    print(matriz_String)
