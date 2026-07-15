@@ -1,145 +1,128 @@
-#Codigo de practica para aplicar mi aprendizaje en numpy
-
 import numpy as np
 
-print(f"Version: {np.__version__}")
+print(f"Versión de NumPy: {np.__version__}\n")
 
-#Funcion para el selector de operaciones
+#Operaciones
+def cambio_de_filas(m, f1, f2):
+    nueva = m.copy()
+    nueva[[f1-1, f2-1]] = nueva[[f2-1, f1-1]]
+    return nueva
 
-def menu():
-  print("Selecciona Una Operacion a Realizar")
-  print("1. Cambiar Filas")
-  print("2. Multiplicar por un Escalar")
-  print("3. Sumar Filas")
-  print("4. Mostrar Matriz")
-  print("5. Salir")
+def multiplicacion_de_fila(m, fila, escalar):
+    nueva = m.copy()
+    nueva[fila-1] = nueva[fila-1] * escalar
+    return nueva
 
-matriz = np.array([[1,2,3],
-                   [4,5,6],
-                   [7,8,9],
-                   [10,11,12],
-                   [13,14,16],
-                   [17,18,19],
-                   ])
+def suma_de_filas(m, f1, f2):
+    nueva = m.copy()
+    nueva[f1-1] = nueva[f1-1] + nueva[f2-1]
+    return nueva
 
-fils_n = matriz.size
-matriz_Resultante = []
+def crear_matriz(n, m):
+    rng = np.random.default_rng(seed=42)
+    return rng.integers(low=0, high=10, size=(n, m))
 
-#Cambio de Filas
+def definir_dimension():
+    while True:
+        try:
+            filas = int(input("Número de filas: "))
+            columnas = int(input("Número de columnas: "))
+            if filas <= 0 or columnas <= 0:
+                print("Las dimensiones deben ser positivas.\n")
+                continue
+            return filas, columnas
+        except ValueError:
+            print("Error: introduce números enteros válidos.\n")
 
-def cambio_De_Filas(m, f1, f2):  
-  fila_1 = m[f1-1,:]
-  fila_2 = m[f2-1,:]
-  
-  nueva_matriz = m[0:fils_n].copy()
-  
-  nueva_matriz[f1-1] = fila_2
-  nueva_matriz[f2-1] = fila_1
-  
-  return nueva_matriz
+def definir_dos_filas():
+    while True:
+        try:
+            f1 = int(input("Fila 1: "))
+            f2 = int(input("Fila 2: "))
+            return f1, f2
+        except ValueError:
+            print("Error: introduce números enteros.\n")
 
-  
-#cambio_De_Filas(matriz,6,2)
+def definir_fila_y_escalar():
+    while True:
+        try:
+            fila = int(input("Número de fila: "))
+            entrada = input("Escalar: ").strip()
+            
+            # Si el usuario escribe una fracción (contiene '/')
+            if '/' in entrada:
+                num, den = entrada.split('/', 1)   # separa numerador y denominador
+                numerador = float(num)
+                denominador = float(den)
+                if denominador == 0:
+                    print("Error: el denominador no puede ser cero.\n")
+                    continue
+                escalar = numerador / denominador
+            else:
+                escalar = float(entrada)   # entero o decimal normal
+                
+            return fila, escalar
+        except ValueError:
+            print("Error: introduce valores numéricos válidos. Para fracciones usa 'a/b'.\n")
 
-#Multiplicacion por un escalar
+#Menu
+def mostrar_menu():
+    print("Operaciones para Gauss-Jordan")
+    print("1. Cambiar filas")
+    print("2. Multiplicar fila por escalar")
+    print("3. Sumar filas")
+    print("4. Mostrar matriz actual")
+    print("5. Salir")
 
-def multiplicacion_De_Fila(m, f1, escalar):
-  print("Realizando una multipicacion por escalar")
-  
-  fila_1 = m[f1-1,:]
-  
-  nueva_matriz = m[0:fils_n].copy()
-  
-  nueva_matriz[f1-1] = fila_1 * escalar
-  
-  print(f"Matriz original: {m}")
-  print(f"Matriz cambiada: {nueva_matriz}")
-  
-#multiplicacion_De_Fila(matriz, 4, 50)
+#Codigo Principal
+filas, columnas = definir_dimension()
+matriz_original = crear_matriz(filas, columnas)
 
-#Suma de Filas
+matriz_actual = matriz_original.copy()
 
-def Suma_De_Filas(m, f1, f2):
-  print("Realizando una Suma de Filas")
-  
-  fila_1 = m[f1-1,:]
-  fila_2 = m[f2-1,:]
-  
-  nueva_matriz = m[0:fils_n].copy()
-  
-  nueva_matriz[f1-1] = fila_1 + fila_2
-  
-  print(f"Matriz original: {m}")
-  print(f"Matriz cambiada: {nueva_matriz}")
-
-#Suma_De_Filas(matriz, 1, 2)
-
-#Creacion de matriz aleatoria
-
-def crear_Matriz(n, m):
-  rng = np.random.default_rng(seed=42)
-  matriz_Aleatoria = rng.integers(low=0, high=10, size=(n,m))
-  return matriz_Aleatoria
-
-#Definir Dimensiones de la matriz
-
-def definir_Dimension():
-  while True:
-    try:
-      filas = int(input("Ingresa el numero de Filas: "))
-      columnas = int(input("Ingresa el numero de Columnas: "))
-      return filas, columnas
-    except ValueError:
-      print("Error: Ingresa numeros validos")
-
-#Definir Filas 1 y 2
-
-def definir_Filas():
-  while True:
-    try:
-      fila_1 = int(input("Ingresa la fila 1: "))
-      fila_2 = int(input("Ingresa la fila 2: "))
-      return fila_1, fila_2
-    except ValueError:
-      print("Error: Ingresa numeros validos")
-
-#Definir filas y escalar
-
-def definir_Fila_Escalar():
-  while True:
-    try:
-      fila_1 = int(input("Ingresa la Fila 1: "))
-      escalar = int(input("Ingresa el Escalar: "))
-      return fila_1, escalar
-    except ValueError:
-      print("Error: Ingresa numeros validos")
-
-#Empezamos con el codigo
-filas, columnas = definir_Dimension()
-
-matriz_Nueva = crear_Matriz(filas, columnas)
-print(f"Esta es la nueva matriz: {matriz_Nueva}")
+print("Matriz inicial:")
+print(matriz_actual)
 
 while True:
-  menu()
-  option = input("Elige una opcion del 1-5: ")
-  
-  if option == "5":
-    print("Gracias por usar mi codigo")
-    break
-  
-  elif option == "4":
-    if matriz_Resultante:
-      print("Matriz resultante")
-      print("operacion.pop")
+    mostrar_menu()
+    opcion = input("Elige una opción (1-5): ").strip()
+
+    if opcion == "5":
+        print("¡Hasta luego!")
+        break
+
+    elif opcion == "4":
+        print("\nEstado actual de la matriz:")
+        print(matriz_actual)
+
+    elif opcion in ("1", "2", "3"):
+        # Verificar que la matriz tenga al menos 1 fila (siempre es cierto)
+        if opcion == "1":
+            f1, f2 = definir_dos_filas()
+            if f1 < 1 or f1 > filas or f2 < 1 or f2 > filas:
+                print("Número de fila fuera de rango.\n")
+                continue
+            matriz_actual = cambio_de_filas(matriz_actual, f1, f2)
+            print("Filas intercambiadas. Nueva matriz:")
+            print(matriz_actual)
+
+        elif opcion == "2":
+            fila, esc = definir_fila_y_escalar()
+            if fila < 1 or fila > filas:
+                print("Número de fila fuera de rango.\n")
+                continue
+            matriz_actual = multiplicacion_de_fila(matriz_actual, fila, esc)
+            print(f"Fila {fila} multiplicada por {esc}. Nueva matriz:")
+            print(matriz_actual)
+
+        elif opcion == "3":
+            f1, f2 = definir_dos_filas()
+            if f1 < 1 or f1 > filas or f2 < 1 or f2 > filas:
+                print("Número de fila fuera de rango.\n")
+                continue
+            matriz_actual = suma_de_filas(matriz_actual, f1, f2)
+            print(f"Fila {f2} sumada a la fila {f1}. Nueva matriz:")
+            print(matriz_actual)
+
     else:
-      print("No hay operaciones en el historial")
-  
-  elif option in ["1", "2", "3"]:
-    
-    if option == "1":
-      fila_1, fila_2 = definir_Filas()
-      resultado = cambio_De_Filas(matriz_Nueva, fila_1, fila_2)
-      print(resultado)
-      
-    el
+        print("Opción no válida. Intenta de nuevo.")
