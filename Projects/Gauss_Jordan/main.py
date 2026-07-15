@@ -1,34 +1,52 @@
+# main.py
+# Punto de entrada principal del programa
+
 import numpy as np
-from escalar import definir_Matriz_Escalar, definir_Matriz_Suma, definir_Matriz_Intercambio
-from newMatriz import resultado, definir_dimension, crear_matriz, mostrar_menu
+from matrizOps import (
+    crear_matriz, resultado, mostrar_menu,
+    definir_Matriz_Escalar, definir_Matriz_Suma, definir_Matriz_Intercambio
+)
 
-filas, columnas = definir_dimension()
-matriz_original = crear_matriz(filas, columnas)
-matriz_actual = matriz_original.copy()
+def definir_dimension():
+    """
+    Solicita al usuario el número de filas y columnas para la matriz.
+    Valida que sean enteros positivos.
+    """
+    while True:
+        try:
+            filas = int(input("Número de filas: "))
+            columnas = int(input("Número de columnas: "))
+            if filas <= 0 or columnas <= 0:
+                print("Las dimensiones deben ser positivas.\n")
+                continue
+            return filas, columnas
+        except ValueError:
+            print("Error: introduce números enteros válidos.\n")
 
-while True:
-    mostrar_menu()
-    opcion = input("Elige una opción (1-5): ").strip()
+# ---------- Programa principal ----------
+if __name__ == "__main__":
+    print("Bienvenido al programa de operaciones con matrices de fracciones.")
+    filas, columnas = definir_dimension()
+    matriz_original = crear_matriz(filas, columnas)
+    matriz_actual = np.copy(matriz_original)
 
-    if opcion == "5":
-        print("¡Hasta luego!")
-        break
+    while True:
+        mostrar_menu()
+        opcion = input("Elige una opción (1-5): ").strip()
 
-    elif opcion == "4":
-        resultado(matriz_actual)
-        
-    elif opcion in ("1", "2", "3"):
-      
-      if opcion == "1":
-        matriz_actual = definir_Matriz_Intercambio(matriz_actual)
-        resultado(matriz_actual)
-        
-      elif opcion == "2":
-        matriz_actual = definir_Matriz_Escalar(matriz_actual)
-        resultado(matriz_actual)
-        
-      elif opcion == "3":
-        matriz_actual = definir_Matriz_Suma(matriz_actual)
-        resultado(matriz_actual)
-        
-      
+        if opcion == "5":
+            print("¡Hasta luego!")
+            break
+        elif opcion == "4":
+            resultado(matriz_actual)
+        elif opcion == "1":
+            matriz_actual = definir_Matriz_Intercambio(matriz_actual)
+            resultado(matriz_actual)
+        elif opcion == "2":
+            matriz_actual = definir_Matriz_Escalar(matriz_actual)
+            resultado(matriz_actual)
+        elif opcion == "3":
+            matriz_actual = definir_Matriz_Suma(matriz_actual)
+            resultado(matriz_actual)
+        else:
+            print("Opción no válida. Intenta de nuevo.")
