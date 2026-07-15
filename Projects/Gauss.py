@@ -27,9 +27,7 @@ matriz_Resultante = []
 
 #Cambio de Filas
 
-def cambio_De_Filas(m, f1, f2):
-  print("Realizando un cambio de filas")
-  
+def cambio_De_Filas(m, f1, f2):  
   fila_1 = m[f1-1,:]
   fila_2 = m[f2-1,:]
   
@@ -38,8 +36,8 @@ def cambio_De_Filas(m, f1, f2):
   nueva_matriz[f1-1] = fila_2
   nueva_matriz[f2-1] = fila_1
   
-  print(f"Matriz original: {m}")
-  print(f"Matriz cambiada: {nueva_matriz}")
+  return nueva_matriz
+
   
 #cambio_De_Filas(matriz,6,2)
 
@@ -94,24 +92,54 @@ def definir_Dimension():
     except ValueError:
       print("Error: Ingresa numeros validos")
 
+#Definir Filas 1 y 2
+
+def definir_Filas():
+  while True:
+    try:
+      fila_1 = int(input("Ingresa la fila 1: "))
+      fila_2 = int(input("Ingresa la fila 2: "))
+      return fila_1, fila_2
+    except ValueError:
+      print("Error: Ingresa numeros validos")
+
+#Definir filas y escalar
+
+def definir_Fila_Escalar():
+  while True:
+    try:
+      fila_1 = int(input("Ingresa la Fila 1: "))
+      escalar = int(input("Ingresa el Escalar: "))
+      return fila_1, escalar
+    except ValueError:
+      print("Error: Ingresa numeros validos")
+
 #Empezamos con el codigo
 filas, columnas = definir_Dimension()
 
 matriz_Nueva = crear_Matriz(filas, columnas)
-print(matriz_Nueva)
+print(f"Esta es la nueva matriz: {matriz_Nueva}")
 
-# while True:
-#   menu()
-#   option = input("Elige una opcion del 1-5: ")
+while True:
+  menu()
+  option = input("Elige una opcion del 1-5: ")
   
-#   if option == "5":
-#     print("Gracias por usar mi codigo")
-#     break
+  if option == "5":
+    print("Gracias por usar mi codigo")
+    break
   
-#   elif option == "4":
-#     if matriz_Resultante:
-#       print("Matriz resultante")
-#       print("operacion.pop")
-#     else:
-#       print("No hay operaciones en el historial")
+  elif option == "4":
+    if matriz_Resultante:
+      print("Matriz resultante")
+      print("operacion.pop")
+    else:
+      print("No hay operaciones en el historial")
   
+  elif option in ["1", "2", "3"]:
+    
+    if option == "1":
+      fila_1, fila_2 = definir_Filas()
+      resultado = cambio_De_Filas(matriz_Nueva, fila_1, fila_2)
+      print(resultado)
+      
+    el
