@@ -1,15 +1,6 @@
 from fractions import Fraction
 import numpy as np
 
-# Definir un formateador para objetos
-def frac_formatter(x):
-    if isinstance(x, Fraction):
-        return f"{x.numerator}/{x.denominator}"
-    return str(x)
-
-#lista = np.array([1, 2, 3, 4], dtype=object)
-lista = np.array([1, 2, 3, 4])
-
 def sol_Escalar(mensaje="Escalar: "):
     while True:
         entrada = input(mensaje).strip() #Solicitamos El escalar por el cual multiplicar la fila y eliminamos los espacios
@@ -44,26 +35,28 @@ def operacion_Es_Fil(esc, fil): #Solicitamos el escalar y la lista (mas especifi
     return esc * fil_Frac #Retornamos la operacion escalar x lista
 #Aplica una operacion a la lista
 
-#Formater
+#Formatear la fila completa para convertirla en un string
 def formatear_array_fracciones(arr):
     # Convierte cada elemento a string en formato "num/den" si es Fraction, o str() si no
     return '[' + ' '.join(f"{x.numerator}/{x.denominator}" if isinstance(x, Fraction) else str(x) for x in arr) + ']'
 
 
-def definir_fila_y_escalar():
+def definir_Matriz_Escalar(matriz_Nueva):
     n_fila = sol_Numero_De_Fila() #Defininimos nuestro numero de fila
     n_escalar = sol_Escalar() #Definimos nuestro numero de escalar
     
-    fila_Nueva = operacion_Es_Fil(n_escalar, lista)
-    return n_fila, n_escalar, fila_Nueva
-  
-def resultado(n_fila, n_escalar, fila_Nueva):
-    fila_Formateada = formatear_array_fracciones(fila_Nueva)
-    print(f"Escalar: {n_escalar}")
-    print(f"Numero de Fila: {n_fila}")# (tipo {type(escalar).__name__})
-    print(f"Fila Nueva: {fila_Formateada}") #  (tipo {type(fila_Nueva).__name__})
-    print(type(fila_Formateada))
+    matriz = matriz_Nueva.copy()
     
+    matriz[n_fila-1] = operacion_Es_Fil(n_escalar, matriz[n_fila-1])
+    return matriz
 
-nF, nE, fN = definir_fila_y_escalar()
-resultado(nF, nE, fN)
+def resultado(matriz):
+    matriz_String = formatear_array_fracciones(matriz)
+    print(f"Matriz Frac: {matriz}")
+    print(f"Matriz String: {matriz_String}")
+    
+# def resultado(n_fila, n_escalar, matriz):
+#     fila_Formateada = formatear_array_fracciones(fila_Nueva)
+#     print(f"Fila Nueva Principal: {fila_Nueva}")
+#     print(f"Fila Nueva String: {fila_Formateada}") #  (tipo {type(fila_Nueva).__name__})
+#     print(type(fila_Formateada))
