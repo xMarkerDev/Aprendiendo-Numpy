@@ -9,3 +9,6 @@ array = np.array([
 
 #array[start:end:step]
 
+#para seleccionar columnas debemos
+
+print(array[:, 0])
