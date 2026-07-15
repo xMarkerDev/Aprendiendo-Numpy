@@ -1,58 +1,54 @@
-import numpy as np      
-        
-def despeje(number_str):
-  num, den = number_str.split('/', 1)   # separa numerador y denominador
-  numerador = int(num)
-  denominador = int(den)
-  
-  elemento = "2/3"
-  en, ed = elemento.split('/', 1)
-  elemento_numerador = int(en)
-  elemento_denominador = int(ed)
-  
-  if elemento_denominador == denominador:
-    elemento_nuevo = numerador
-    print(f"Este es el elemento despejado, solo queda el numerador: {elemento_nuevo}")
-  else:
-    elemento_nuevo = f"{(elemento_numerador * numerador)}/{elemento_denominador * denominador}"
-  print(f"Este es el elemento no despejado: {elemento_nuevo}")
-  print(type(elemento_nuevo))
-  return elemento_nuevo  
-        
-def procesar(number):
-  if isinstance(number, str):
-    escalar = despeje(number)
-    print(f"Este es nuestro escalar ya multiplicado o despejado: {escalar}")
-  elif isinstance(number, int):
-    escalar = number
-  return escalar
+from fractions import Fraction
+import numpy as np
 
-def definir_fila_y_escalar():
+#lista = np.array([1, 2, 3, 4], dtype=object)
+lista = np.array([1, 2, 3, 4])
+
+def leer_escalar(mensaje="Escalar: "):
+    while True:
+        entrada = input(mensaje).strip() #Solicitamos El escalar por el cual multiplicar la fila y eliminamos los espacios
+        if '/' in entrada: #Si el escalar contiene la notacion (a/b)
+            try:
+                num_str, den_str = entrada.split('/', 1) #Separamos el escalar en dos partes con respecto al "/"
+                num = int(num_str) #Primera parte es el numerador entero
+                den = int(den_str) #Segunda parte es el denominador entero
+                if den == 0:
+                    print("Error: el denominador no puede ser cero.")
+                    continue
+                return Fraction(num, den) #Retornamos los valores enteros en forma fraccionada
+            except ValueError:
+                print("Error: formato inválido. Usa 'a/b' con números enteros.")
+        else:
+            try:
+                return Fraction(int(entrada), 1) #Si el escalar no contiene la notacion (a/b) lo transformamos a fraccion a/1
+            except ValueError:
+                print("Error: introduce un número entero o una fracción 'a/b'.")
+#Nos devuelve el escalar fraccionado
+
+def leer_fila(mensaje="Número de fila: "):
     while True:
         try:
-            fila = int(input("Número de fila: "))
-            entrada = input("Escalar: ").strip()
-            
-            # Si el usuario escribe una fracción (contiene '/')
-            if '/' in entrada:
-                num, den = entrada.split('/', 1)   # separa numerador y denominador
-
-                if den == "0":
-                    print("Error: el denominador no puede ser cero.\n")
-                    continue
-                es = f"{num}/{den}"
-            else:
-                es = int(entrada)   # entero o decimal normal
-            
-            escalar = procesar(es)
-            
-            print(type(escalar))
-            print(escalar)
-            return fila, escalar
+            return int(input(mensaje))
         except ValueError:
-            print("Error: introduce valores numéricos válidos. Para fracciones usa 'a/b'.\n")
-  
+            print("Error: introduce un número entero válido.")
+#Nos devuelve el numero de la fila
 
-#Despeje
-                 
-definir_fila_y_escalar()
+def procesar_escalar(escalar, list):
+    lista_Frac = list.astype(object)
+    return escalar * lista_Frac
+#Aplica una operacion a la lista
+
+def definir_fila_y_escalar():
+    fila = leer_fila()
+    escalar_original = leer_escalar()
+    escalar_procesado = procesar_escalar(escalar_original, lista)
+    
+    print(f"Escalar original: {escalar_original} (tipo {type(escalar_original).__name__})")
+    print(f"Escalar procesado (multiplicado por 2/3): {escalar_procesado} (tipo {type(escalar_procesado).__name__})")
+    
+    return fila, escalar_procesado
+
+# Ejecución
+if __name__ == "__main__":
+    fila, escalar = definir_fila_y_escalar()
+    print(f"\nResultado final: fila = {fila}, escalar = {escalar}")
