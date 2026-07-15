@@ -1,0 +1,100 @@
+#Codigo de practica para aplicar mi aprendizaje en numpy
+
+import numpy as np
+
+print(f"Version: {np.__version__}")
+
+#Funcion para el selector de operaciones
+
+def menu():
+  print("Selecciona Una Operacion a Realizar")
+  print("1. Cambiar Filas")
+  print("2. Multiplicar por un Escalar")
+  print("3. Sumar Filas")
+  print("4. Mostrar Matriz")
+  print("5. Salir")
+
+matriz = np.array([[1,2,3],
+                   [4,5,6],
+                   [7,8,9],
+                   [10,11,12],
+                   [13,14,16],
+                   [17,18,19],
+                   ])
+
+fils_n = matriz.size
+matriz_Resultante = []
+
+#Cambio de Filas
+
+def cambio_De_Filas(m, f1, f2):
+  print("Realizando un cambio de filas")
+  
+  fila_1 = m[f1-1,:]
+  fila_2 = m[f2-1,:]
+  
+  nueva_matriz = m[0:fils_n].copy()
+  
+  nueva_matriz[f1-1] = fila_2
+  nueva_matriz[f2-1] = fila_1
+  
+  print(f"Matriz original: {m}")
+  print(f"Matriz cambiada: {nueva_matriz}")
+  
+#cambio_De_Filas(matriz,6,2)
+
+#Multiplicacion por un escalar
+
+def multiplicacion_De_Fila(m, f1, escalar):
+  print("Realizando una multipicacion por escalar")
+  
+  fila_1 = m[f1-1,:]
+  
+  nueva_matriz = m[0:fils_n].copy()
+  
+  nueva_matriz[f1-1] = fila_1 * escalar
+  
+  print(f"Matriz original: {m}")
+  print(f"Matriz cambiada: {nueva_matriz}")
+  
+#multiplicacion_De_Fila(matriz, 4, 50)
+
+#Suma de Filas
+
+def Suma_De_Filas(m, f1, f2):
+  print("Realizando una Suma de Filas")
+  
+  fila_1 = m[f1-1,:]
+  fila_2 = m[f2-1,:]
+  
+  nueva_matriz = m[0:fils_n].copy()
+  
+  nueva_matriz[f1-1] = fila_1 + fila_2
+  
+  print(f"Matriz original: {m}")
+  print(f"Matriz cambiada: {nueva_matriz}")
+
+#Suma_De_Filas(matriz, 1, 2)
+
+#Creacion de matriz aleatoria
+
+def crear_Matriz():
+  rng = np.random.default_rng(seed=42)
+  matriz_Aleatoria = rng.integers(low=0, high=10, size=(6,6))
+  return matriz_Aleatoria
+
+matriz_Nueva = crear_Matriz()
+print(matriz_Nueva)
+
+#Definir Dimensiones de la matriz
+
+def definir_Dimension():
+  while True:
+    try:
+      filas = int(input("Ingresa el numero de Filas: "))
+      columnas = int(input("Ingresa el numero de Columnas"))
+      return filas, columnas
+    except ValueError:
+      print("Error: Ingresa numeros validos")
+
+
