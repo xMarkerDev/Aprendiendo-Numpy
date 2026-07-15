@@ -52,12 +52,12 @@ def definir_fila_y_escalar():
             # Si el usuario escribe una fracción (contiene '/')
             if '/' in entrada:
                 num, den = entrada.split('/', 1)   # separa numerador y denominador
-                numerador = float(num)
-                denominador = float(den)
-                if denominador == 0:
+                # numerador = float(num)
+                # denominador = float(den)
+                if den == "0":
                     print("Error: el denominador no puede ser cero.\n")
                     continue
-                escalar = numerador / denominador
+                escalar = f"{num} / {den}"
             else:
                 escalar = float(entrada)   # entero o decimal normal
                 
