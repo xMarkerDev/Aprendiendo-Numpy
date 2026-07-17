@@ -1,0 +1,70 @@
+#pantalla-inicio {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--main-background-color);
+  z-index: 10;
+  transition:
+    opacity 0.8s ease,
+    visibility 0.8s ease;
+}
+
+#pantalla-inicio.oculta {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#contenido-principal {
+  opacity: 0;
+  transition: opacity 0.8s ease 0.3s;
+  overflow-y: auto;
+}
+
+#contenido-principal.visible {
+  opacity: 1;
+}
+
+.contain_principal .logo_i {
+  font-size: 230px;
+  color: rgba(220, 220, 220, 0.192);
+  position: absolute;
+  top: -140px;
+}
+.logo_t {
+  color: #c0c0c0;
+  font-size: 70px;
+  user-select: none;
+}
+.logo_p {
+  color: #c0c0c0;
+  font-size: 30px;
+  margin-bottom: 40px;
+  user-select: none;
+}
+.button_init {
+  font-family: var(--main-font-family);
+  font-size: 66px;
+  font-weight: bold;
+  width: 270px;
+  height: 130px;
+  border-radius: 100px;
+  text-align: center;
+  color: #222;
+  background-color: #838383;
+  user-select: none;
+  cursor: pointer;
+  border: 7px solid #222;
+}
+.button_init:active {
+  background-color: #b6b6b6;
+  color: #474747;
+  border-color: #b6b6b6;
+  font-size: 73px;
+}

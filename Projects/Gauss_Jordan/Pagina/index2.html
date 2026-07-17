@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Página</title>
+  <style>
+    /* Estilos generales */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      overflow: hidden; /* Evita scroll mientras mostramos la pantalla de inicio */
+    }
+
+    /* Pantalla de inicio: ocupa toda la ventana, centrada */
+    #pantalla-inicio {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      z-index: 10; /* Por encima del contenido principal */
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+
+    #pantalla-inicio h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    #pantalla-inicio p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      opacity: 0.8;
+    }
+
+    #btn-empezar {
+      padding: 15px 40px;
+      font-size: 1.5rem;
+      background-color: #ff6b6b;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: transform 0.3s, background-color 0.3s;
+    }
+
+    #btn-empezar:hover {
+      background-color: #ee5a24;
+      transform: scale(1.05);
+    }
+
+    /* Cuando la pantalla de inicio esté oculta (clase .oculta) */
+    #pantalla-inicio.oculta {
+      opacity: 0;
+      visibility: hidden;
+      /* pointer-events: none; */ /* Opcional, para que no reciba clics */
+    }
+
+    /* Contenido principal: inicialmente oculto, se muestra después */
+    #contenido-principal {
+      width: 100%;
+      height: 100vh;
+      background: #f4f4f9;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      opacity: 0; /* Invisible al principio */
+      transition: opacity 0.8s ease 0.3s; /* Aparece con un pequeño retraso */
+    }
+
+    #contenido-principal.visible {
+      opacity: 1;
+    }
+
+    /* Estilos para el contenido de ejemplo */
+    #contenido-principal h2 {
+      font-size: 2.5rem;
+      color: #333;
+    }
+
+    #contenido-principal p {
+      font-size: 1.2rem;
+      color: #555;
+      margin-top: 10px;
+    }
+
+    /* Opcional: un pie o algo */
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PANTALLA DE INICIO -->
+  <div id="pantalla-inicio">
+    <h1>Bienvenido</h1>
+    <p>Esta es la pantalla de inicio de tu página</p>
+    <button id="btn-empezar">Empezar</button>
+  </div>
+
+  <!-- CONTENIDO PRINCIPAL (inicialmente oculto) -->
+  <div id="contenido-principal">
+    <div class="card">
+      <h2>¡Esta es la página principal!</h2>
+      <p>Aquí va todo tu código, tus secciones, etc.</p>
+      <p style="margin-top:20px; font-size:0.9rem; color:#888;">Ejemplo: puedes agregar tu contenido aquí.</p>
+    </div>
+  </div>
+
+  <script>
+    // Obtener referencias a los elementos
+    const pantallaInicio = document.getElementById('pantalla-inicio');
+    const contenidoPrincipal = document.getElementById('contenido-principal');
+    const btnEmpezar = document.getElementById('btn-empezar');
+
+    // Escuchar el clic en el botón
+    btnEmpezar.addEventListener('click', function() {
+      // Ocultar la pantalla de inicio (añadir clase .oculta)
+      pantallaInicio.classList.add('oculta');
+
+      // Mostrar el contenido principal (añadir clase .visible)
+      contenidoPrincipal.classList.add('visible');
+    });
+  </script>
+
+</body>
+</html>
