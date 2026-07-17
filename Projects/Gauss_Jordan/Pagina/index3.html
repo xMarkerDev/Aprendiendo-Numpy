@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: #222;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* Contenedor principal: se ajusta al contenido (sin width/height fijos) */
+      main {
+        background-color: red;
+        padding: 20px; /* opcional, para separación del borde */
+        display: flex;
+        flex-direction: column; /* cada ul es una fila vertical */
+        gap: 20px;
+        width: fit-content; /* se ajusta al ancho del contenido */
+        height: fit-content; /* se ajusta al alto del contenido */
+        border-radius: 8px;
+      }
+
+      /* Cada lista: fila horizontal con los ítems */
+      ul {
+        background-color: blue;
+        display: flex;
+        flex-wrap: wrap; /* permite que los ítems salten a la siguiente línea si no caben */
+        gap: 20px;
+        padding: 10px; /* opcional */
+        list-style: none;
+        width: fit-content; /* se ajusta al ancho de sus hijos */
+      }
+
+      /* Cada ítem: cuadrado de 20px */
+      li {
+        background-color: aquamarine;
+        width: 20px;
+        height: 20px;
+        /* Si quieres que sea perfectamente cuadrado independientemente del contenido: */
+        flex-shrink: 0; /* no se encoge */
+        flex-grow: 0; /* no se estira */
+        aspect-ratio: 1; /* fuerza cuadrado (opcional si ya tienes width y height) */
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </main>
+  </body>
+</html>

@@ -15,9 +15,9 @@
   <body>
     <!-- <div id="pantalla-inicio" class="contain_principal">
       <h2 class="logo_t">Math Calc</h2>
-      <p class="logo_p">Operator Gauss-Jordan</p> -->
-    <!-- <i class="fa-solid fa-infinity logo_i"></i> -->
-    <!-- <button class="button_init" id="btn-empezar">Start</button>
+      <p class="logo_p">Operator Gauss-Jordan</p>
+      <i class="fa-solid fa-infinity logo_i"></i>
+      <button class="button_init" id="btn-empezar">Start</button>
     </div> -->
 
     <!-- Contenido principal (dentro de main, inicialmente oculto) -->
@@ -36,9 +36,8 @@
         </ul>
       </header>
       <nav class="nav">
-        <button class="title_operation">Operaciones</button>
         <ul class="operation_contain">
-          <li>
+          <!-- <li>
             <button>Definir Dimensiones</button>
           </li>
           <li>
@@ -52,49 +51,495 @@
           </li>
           <li>
             <button>Sumar Filas</button>
-          </li>
+          </li> -->
+          <li><button id="btn_operation" class="title_operation"></button></li>
+          <li><button></button></li>
+          <li><button></button></li>
+          <li><button></button></li>
+          <li><button></button></li>
+          <li><button></button></li>
         </ul>
       </nav>
+      <article class="article">
+        <div class="contain_panel">
+          <div class="contain_pantalla"></div>
+          <div class="contain_calc">
+            <ul class="contain_buttons">
+              <li class="buttons">
+                <button>1</button>
+              </li>
+              <li class="buttons">
+                <button>2</button>
+              </li>
+              <li class="buttons">
+                <button>3</button>
+              </li>
+            </ul>
+            <ul class="contain_buttons">
+              <li class="buttons">
+                <button>4</button>
+              </li>
+              <li class="buttons">
+                <button>5</button>
+              </li>
+              <li class="buttons">
+                <button>6</button>
+              </li>
+            </ul>
+            <ul class="contain_buttons">
+              <li class="buttons">
+                <button>7</button>
+              </li>
+              <li class="buttons">
+                <button>8</button>
+              </li>
+              <li class="buttons">
+                <button>9</button>
+              </li>
+            </ul>
+            <ul class="contain_buttons">
+              <li class="buttons">
+                <button>x</button>
+              </li>
+              <li class="buttons">
+                <button>0</button>
+              </li>
+              <li class="buttons">
+                <button>/</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </article>
       <main class="main">
-        <div class="contain_r"></div>
-        <div class="contain_Matriz">
-          <ul class="matriz">
-            <li class="filas">
-              <span>1</span><span>1</span><span>1</span><span>1</span
-              ><span>1</span> <span>1</span><span>1</span><span>1</span
-              ><span>1</span><span>1</span>
-            </li>
-            <li class="filas">
-              <span>1</span><span>1</span><span>1</span><span>1</span
-              ><span>1</span> <span>1</span><span>1</span><span>1</span
-              ><span>1</span><span>1</span>
-            </li>
-            <li class="filas">
-              <span>1</span><span>1</span><span>1</span><span>1</span
-              ><span>1</span> <span>1</span><span>1</span><span>1</span
-              ><span>1</span><span>1</span>
-            </li>
-            <li class="filas">
-              <span>1</span><span>1</span><span>1</span><span>1</span
-              ><span>1</span> <span>1</span><span>1</span><span>1</span
-              ><span>1</span><span>1</span>
-            </li>
-            <li class="filas">
-              <span>1</span><span>1</span><span>1</span><span>1</span
-              ><span>1</span> <span>1</span><span>1</span><span>1</span
-              ><span>1</span><span>1</span>
-            </li>
-            <li class="filas">
-              <span>1</span><span>1</span><span>1</span><span>1</span
-              ><span>1</span> <span>1</span><span>1</span><span>1</span
-              ><span>1</span><span>1</span>
-            </li>
-            <li class="filas">
-              <span>1</span><span>1</span><span>1</span><span>1</span
-              ><span>1</span> <span>1</span><span>1</span><span>1</span
-              ><span>1</span><span>1</span>
-            </li>
-          </ul>
+        <!-- <div class="contain_r"></div> -->
+        <!-- <div class="contain_panel">
+          <div class="contain_pantalla">
+
+          </div>
+          <div class="contain_calc">
+
+          </div>
+        </div> -->
+        <div class="contain_matriz">
+          <div class="matriz">
+            <ul class="fila">
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+            </ul>
+            <ul class="fila">
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+            </ul>
+            <ul class="fila">
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+            </ul>
+            <ul class="fila">
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+            </ul>
+            <ul class="fila">
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+            </ul>
+            <ul class="fila">
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+            </ul>
+            <ul class="fila">
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+            </ul>
+            <ul class="fila">
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+              <li class="element">
+                <p>233</p>
+                <span></span>
+                <p>232</p>
+              </li>
+            </ul>
+          </div>
         </div>
       </main>
     </div>

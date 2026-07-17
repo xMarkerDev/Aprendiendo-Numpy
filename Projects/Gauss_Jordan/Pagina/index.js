@@ -10,3 +10,9 @@ btnEmpezar.addEventListener("click", function () {
   contenidoPrincipal.classList.add("visible");
 });
 
+const btnOperation = document.getElementById("btn_operation");
+
+btnOperation.addEventListener("click", (e) => {
+  console.log("hola");
+  contenidoPrincipal.classList.toggle("agrandar")
+});
